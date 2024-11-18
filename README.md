@@ -241,7 +241,7 @@ The Inception project is designed to expand knowledge in **system administration
          ```
 
     - **Fill in the Values**:
-      Open the newly created .env file, delete the comment and replace the placeholder values with the actual configuration values.
+      Open the newly created .env file, remove the comment and replace the placeholder values with the actual configuration values.
 
       For example:
         ```env
