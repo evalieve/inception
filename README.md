@@ -224,7 +224,37 @@ The Inception project is designed to expand knowledge in **system administration
 
 <br>
 
-2. **Setting Up Environment Variables**:
+2. **Update Volume Paths in docker-compose.yml**:
+
+   In the ['compose.yml'](srcs/compose.yml) file, update the device paths in the volumes section to match directories on your host machine.
+
+   Example:
+
+    ``` yaml
+    volumes:
+      mariadb:
+        driver_opts:
+          type: none
+          o: bind
+          device: /home/yourusername/data/mariadb # Update this path
+      wordpress:
+        driver_opts:
+          type: none
+          o: bind
+          device: /home/yourusername/data/wordpress # Update this path
+    ```
+
+
+   > Create these directories if they don’t exist:
+
+   ``` bash
+   mkdir -p /home/yourusername/data/mariadb
+   mkdir -p /home/yourusername/data/wordpress
+    ```
+
+<br>
+
+3. **Setting Up Environment Variables**:
 
    The `.env` file is a critical part of the setup as it stores sensitive information such as domain details, database credentials, and configuration variables. To maintain security, these values are excluded from version control using `.gitignore`.
 
@@ -237,7 +267,7 @@ The Inception project is designed to expand knowledge in **system administration
       Duplicate the .env.template file to create a new .env file in the same directory:
 
          ```bash
-            cp .env.template .env
+         cp .env.template .env
          ```
 
     - **Fill in the Values**:
@@ -245,26 +275,26 @@ The Inception project is designed to expand knowledge in **system administration
 
       For example:
         ```env
-                DB_HOST=mariadb
-                DB_NAME=wordpress
-                DB_USER=wp-user
-                DB_PASS=secure-password
-                
-                WP_TITLE=My WordPress Site
-                WP_HTTPS_URL=https://example.com
-                WP_ADMIN_USER=admin
-                WP_ADMIN_PASS=strongpassword
-                WP_ADMIN_MAIL=admin@example.com
-                WP_USER=editor
-                WP_MAIL=editor@example.com
-                WP_PASS=editorpassword
-                
-                DOMAIN=example.com
+        DB_HOST=mariadb
+        DB_NAME=wordpress
+        DB_USER=wp-user
+        DB_PASS=secure-password
+        
+        WP_TITLE=My WordPress Site
+        WP_HTTPS_URL=https://example.com
+        WP_ADMIN_USER=admin
+        WP_ADMIN_PASS=strongpassword
+        WP_ADMIN_MAIL=admin@example.com
+        WP_USER=editor
+        WP_MAIL=editor@example.com
+        WP_PASS=editorpassword
+        
+        DOMAIN=example.com
         ```
 
 <br>
 
-3. **Using the Makefile**:
+4. **Using the Makefile**:
 
    The Makefile automates common tasks for managing the Docker environment. Below is a list of available commands and their purposes.
     - **Build and Start Containers**: 
@@ -324,7 +354,7 @@ The Inception project is designed to expand knowledge in **system administration
 
 <br>
 
-4.  **Accessing the Application**:
+5.  **Accessing the Application**:
 The WordPress website is accessible through the configured domain over HTTPS.
 
 
