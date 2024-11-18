@@ -265,18 +265,62 @@ The Inception project is designed to expand knowledge in **system administration
 <br>
 
 3. **Using the Makefile**:
-    - Building and Starting Containers:
+
+   The Makefile automates common tasks for managing the Docker environment. Below is a list of available commands and their purposes.
+    - **Build and Start Containers**: 
+      > This is the default target. It builds the Docker images and starts the containers in detached mode.
         ``` bash
         make
         ```
-    - Stopping and Removing Containers:
+
+    - **Start the Containers**: 
+      > Starts the containers defined in docker-compose.yml in detached mode. If the containers are not already built, it will build them first.
+        ``` bash
+        make up
+        ```
+
+    - **Build the Containers**:
+      > Builds the Docker images defined in the docker-compose.yml file without starting the containers.
+        ``` bash
+        make build
+        ```
+
+    - **Stop and Remove the Containers**:
+      > Stops and removes the running containers, including volumes and orphaned containers, to ensure a clean environment.
         ``` bash
         make down
         ```
-    - Rebuilding the Project:
+
+    - **Show Container Status**:
+      > Displays the status of all containers managed by the docker-compose.yml file.
+        ``` bash
+        make ps
+        ```
+        
+    - **View Logs**:
+      > Shows the logs for all services defined in the docker-compose.yml file. Useful for debugging and monitoring.
+        ``` bash
+        make logs
+        ```
+        
+    - **Rebuild and Restart Containers**:
+      > A shortcut to stop (make down), rebuild, and restart (make up) the containers. Useful for applying changes.
         ``` bash
         make re
         ```
+
+    - **Access the NGINX Container**:
+      > Executes an interactive bash session inside the running NGINX container. Use this for debugging or inspecting the NGINX setup.
+        ``` bash
+        make it
+        ```
+
+    - **Clean Up Docker Resourcest**:
+      > Performs a system-wide cleanup of Docker resources, including unused images, containers, networks, and volumes.
+        ``` bash
+        make prune
+        ```
+
 
 <br>
 
