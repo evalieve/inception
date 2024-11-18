@@ -45,12 +45,12 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Users/evalieve/Data/mariadb
+      device: /Users/evalieve/Data/mariadb # Change this to your own path
   wordpress:
     driver_opts:
       type: none
       o: bind
-      device: /Users/evalieve/Data/wordpress
+      device: /Users/evalieve/Data/wordpress # Change this to your own path
 
 networks:
   inception:

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Set the working directory
 if [ ! -d /run/mysqld ]; then
 
 	# Create the run folder
@@ -9,6 +10,7 @@ if [ ! -d /run/mysqld ]; then
 	chown -R	mysql:mysql		/run/mysqld
 	chown -R	mysql:mysql		/var/lib/mysql
 
+	# Initialize the database
 	mysql_install_db
 
 	# Set up the database and the user

@@ -1,7 +1,9 @@
 FROM 	debian:bullseye
 
+# Expose the port
 EXPOSE 	9000
 
+# Update the package list
 RUN 	apt update -y
 
 # Install the required packages
@@ -19,8 +21,7 @@ COPY 	tools/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
 # Make the file executable and move it to the bin directory to use it globally
 RUN 	chmod +x wp-cli.phar
-RUN 	mv		wp-cli.phar				\
-				/usr/local/bin/wp
+RUN 	mv wp-cli.phar /usr/local/bin/wp
 
 # Make run dir
 RUN 	mkdir -p /run/php
@@ -29,4 +30,5 @@ RUN 	mkdir -p /run/php
 COPY 	tools/wp-install.sh .
 RUN 	chmod +x wp-install.sh
 
+# Start the script
 ENTRYPOINT [ "./wp-install.sh" ]

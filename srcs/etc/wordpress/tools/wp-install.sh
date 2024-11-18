@@ -63,4 +63,6 @@ wp theme activate twentytwentythree			\
 		--allow-root
 
 echo "executing php-fpm7.4..."
+
+# Start PHP-FPM
 exec php-fpm7.4 -F -R

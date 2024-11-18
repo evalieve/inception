@@ -1,2 +1,2 @@
-.env
-.DS_Store
+# ignore .env file because it contains sensitive information
+.env 

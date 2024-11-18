@@ -1,5 +1,6 @@
 FROM	debian:bullseye
 
+# Expose the port
 EXPOSE	443
 
 # Install nginx
@@ -8,8 +9,7 @@ RUN 	apt update -y &&				\
 		apt install -y openssl
 
 # Copy the config file
-COPY 	tools/default.conf				\
-		/etc/nginx/conf.d/
+COPY 	tools/default.conf /etc/nginx/conf.d/
 
 # Generate the SSL certificate
 RUN 	openssl req													\
