@@ -56,13 +56,13 @@ The Inception project is designed to expand knowledge in **system administration
     - A local domain is configured to point to the machine's IP address for easy access.
 
 2. **Dockerfiles**: 
-    - Each service (MariaDB, WordPress, NGINX) is implemented with its own Dockerfile, ensuring modularity and adherence to containerization principles.
+    - Each service (MariaDB, WordPress, NGINX) is implemented with its own `Dockerfile`, ensuring modularity and adherence to containerization principles.
 
 3. **Docker Compose**:
-    - The  [`docker-compose.yml`](srcs/docker-compose.yml) file defines services, dependencies, networks, and volumes to orchestrate the containers.
+    - The  [`compose.yml`](srcs/compose.yml) file defines services, dependencies, networks, and volumes to orchestrate the containers.
 
 4. **Makefile Automation**:
-    - Tasks such as building, starting, stopping, and cleaning containers are automated using a Makefile.
+    - Tasks such as building, starting, stopping, and cleaning containers are automated using a `Makefile`.
 
 5. **TLS Security**:
     - A self-signed SSL certificate is generated to secure connections to the infrastructure.
@@ -125,7 +125,7 @@ The Inception project is designed to expand knowledge in **system administration
 
 - **Purpose**:
   Handles the database operations for WordPress.
-    - The Dockerfile installs the MariaDB server and prepares the necessary configurations.
+    - The `Dockerfile` installs the MariaDB server and prepares the necessary configurations.
     - The `init.sh` script initializes the database, creates users, and sets permissions using environment variables.
     - The custom configuration file (`50-server.cnf`) fine-tunes database settings and binds the service to the internal Docker network.
  
@@ -134,7 +134,7 @@ The Inception project is designed to expand knowledge in **system administration
   - **Description**: 
     - Defines the MariaDB container by installing the database server.
     - Copies the configuration and initialization scripts into the container.
-    - Exposes port 3306 for database connections.
+    - Exposes port `3306` for database connections.
 
 - **Configuration File**:
   - **Path**: [`srcs/etc/mariadb/tools/50-server.cnf`](srcs/etc/mariadb/tools/50-server.cnf)
@@ -154,15 +154,15 @@ The Inception project is designed to expand knowledge in **system administration
 
 - **Purpose**:
   Hosts the WordPress application and processes dynamic content.
-  - The Dockerfile installs PHP-FPM, WordPress CLI, and other necessary dependencies.
-  - The wp-install.sh script automates the installation and configuration of WordPress, including user and admin setup.
+  - The `Dockerfile` installs PHP-FPM, WordPress CLI, and other necessary dependencies.
+  - The `wp-install.sh` script automates the installation and configuration of WordPress, including user and admin setup.
 
 - **Dockerfile**:
   - **Path**: [`srcs/etc/wordpress/Dockerfile`](srcs/etc/wordpress/Dockerfile)
   - **Description**: 
     - Sets up a PHP-FPM environment for running WordPress.
     - Includes WordPress CLI for automated installation and configuration.
-    - Exposes port 9000 for PHP processing.
+    - Exposes port `9000` for PHP processing.
 
 - **PHP-FPM Configuration**:
   - **Path**: [`srcs/etc/wordpress/tools/www.conf`](srcs/etc/wordpress/tools/www.conf)
@@ -183,21 +183,21 @@ The Inception project is designed to expand knowledge in **system administration
 
 - **Purpose**:
   Manages incoming HTTPS traffic and routes it to the WordPress container.
-    - The Dockerfile installs NGINX and OpenSSL for secure communication.
+    - The `Dockerfile` installs NGINX and OpenSSL for secure communication.
     - An SSL certificate is generated and applied for HTTPS.
-    - The default.conf file configures NGINX to route requests to the WordPress service and ensures secure handling of files and scripts.
+    - The `default.conf` file configures NGINX to route requests to the WordPress service and ensures secure handling of files and scripts.
 
 - **Dockerfile**:
   - **Path**: [`srcs/etc/nginx/Dockerfile`](srcs/etc/nginx/Dockerfile)
   - **Description**: 
     - Configures NGINX as a reverse proxy for HTTPS.
     - Generates a self-signed SSL certificate for secure communication.
-    - Exposes port 443 for HTTPS traffic.
+    - Exposes port `443` for HTTPS traffic.
 
 - **NGINX Configuration**:
   - **Path**: [`srcs/etc/nginx/tools/default.conf`](srcs/etc/nginx/tools/default.conf)
   - **Description**: 
-    - Configures NGINX to route requests to the WordPress container on port 9000.
+    - Configures NGINX to route requests to the WordPress container on port `9000`.
     - Implements HTTPS and blocks access to sensitive files.
 
 <br>
@@ -274,7 +274,7 @@ The Inception project is designed to expand knowledge in **system administration
 
 
     - **Fill in the Values**:
-      Open the newly created .env file, remove the comment and replace the placeholder values with the actual configuration values.
+      Open the newly created `.env` file, remove the comment and replace the placeholder values with the actual configuration values.
 
       For example:
         ```env
