@@ -263,12 +263,15 @@ The Inception project is designed to expand knowledge in **system administration
    - **Locate the Template**:
      A file named [`.env.template`](./.env.template) is included in the repository. This template contains all the necessary keys with placeholder values.
 
-    - **Copy the Template**:
-      Duplicate the .env.template file to create a new .env file in the same directory:
+    - **Copy and Move the Template**:
+      Duplicate and move the `.env.template` file to create a new `.env` file in the `srcs` directory.
+    
+      ```bash
+      cp .env.template srcs/.env
+      ```
 
-         ```bash
-         cp .env.template .env
-         ```
+   > This ensures that the `.env` file is created and placed in the correct directory, as Docker Compose expects the `.env` file to be in the same directory as the `compose.yml` file.
+
 
     - **Fill in the Values**:
       Open the newly created .env file, remove the comment and replace the placeholder values with the actual configuration values.
@@ -355,8 +358,67 @@ The Inception project is designed to expand knowledge in **system administration
 <br>
 
 5.  **Accessing the Application**:
-The WordPress website is accessible through the configured domain over HTTPS.
 
+    The WordPress website is accessible through the configured domain over HTTPS.
+
+<br>
+
+6.  **Accessing the Database**:
+
+    As part of the learning process for this project, you can access the MariaDB database container and inspect its tables. Follow the steps below to connect to the database and explore its contents.
+
+
+    Run the following command to start an interactive session inside the MariaDB container:
+    ```bash
+    docker exec -it mariadb bash
+    ```
+    
+    Once inside the container, connect to the MariaDB server using the MySQL client:
+    ```bash
+    mysql -u <db_user> -p
+    ```
+    > Replace `<db_user>` with the database username specified in your `.env` file (`DB_USER`).
+    
+    When prompted, enter the database password specified in your `.env` file (`DB_PASS`).
+
+    <br>
+    
+    ### Commands to use within the Database:
+    - **List All Databases**: After logging in, you can view all available databases.
+      ```bash
+        SHOW DATABASES;
+      ```
+    - **Use the WordPress Database**: Switch to the WordPress database.
+      ```bash
+        USE <db_name>;
+      ```
+      > Replace `<db_name>` with the database name specified in your `.env` file (`DB_NAME`).
+    
+    - **List All Tables**: View all tables in the WordPress database.
+      ```bash
+        SHOW TABLES;
+      ```
+    
+    - **Inspect a Specific Table**: To inspect the structure of a specific table.
+      ```bash
+        DESCRIBE <table_name>;
+      ```
+      > Replace `<db_name>` with the database name specified in your `.env` file (`DB_NAME`).
+    
+    - **Query Data from a Table**: To view the contents of a table, use a SELECT query.
+      ```bash
+        SELECT * FROM wp_users;
+      ```
+    
+    - **Exit the Database and Container**:
+      - To exit the MySQL client:
+        ```bash
+        EXIT;
+        ```
+      - To exit the container:
+        ```bash
+        exit
+        ```
 
 <br>
 
