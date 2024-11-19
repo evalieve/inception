@@ -218,7 +218,7 @@ The Inception project is designed to expand knowledge in **system administration
 # How to Compile and Run the Project
 1. **Cloning the Repository**:
       ``` bash
-      git clone https://github.com/example/inception.git
+      git clone https://github.com/evalieve/inception.git
       cd inception
       ```
 
@@ -226,7 +226,7 @@ The Inception project is designed to expand knowledge in **system administration
 
 2. **Update Volume Paths in docker-compose.yml**:
 
-   In the ['compose.yml'](srcs/compose.yml) file, update the device paths in the volumes section to match directories on your host machine.
+   In the [`compose.yml`](srcs/compose.yml) file, update the device paths in the volumes section to match directories on your host machine.
 
    Example:
 
