@@ -357,11 +357,11 @@ The Inception project is designed to expand knowledge in **system administration
 
 5.  **Accessing the Application**:
 
-    The WordPress website is accessible through the configured domain over HTTPS.
+    The WordPress website is accessible through the configured domain or `localhost` over HTTPS.
 
     <br>
 
-    **To log in to the WordPress admin dashboard as the editor**:
+    ### To log in to the WordPress admin dashboard as the editor:
 
     - **Visit the login page at**:
       ``` text
