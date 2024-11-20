@@ -79,10 +79,10 @@ The Inception project is designed to expand knowledge in **system administration
   ``` plaintext
       .
       ├── Makefile
-      ├── .env
       ├── .gitignore
       ├── srcs
       │   ├── compose.yml
+      |   ├── .env
       │   ├── etc
       │   │   ├── mariadb
       │   │   │   ├── Dockerfile
@@ -258,10 +258,8 @@ The Inception project is designed to expand knowledge in **system administration
 
    The `.env` file is a critical part of the setup as it stores sensitive information such as domain details, database credentials, and configuration variables. To maintain security, these values are excluded from version control using `.gitignore`.
 
-   A template `.env` file with all the required keys but without values is provided to ensure consistency.
-
    - **Locate the Template**:
-     A file named [`.env.template`](./.env.template) is included in the repository. This template contains all the necessary keys with placeholder values.
+     A file named [`.env.template`](./.env.template) is included in the root of the repository. This template contains all the necessary keys with placeholder values.
 
     - **Copy and Move the Template**:
       Duplicate and move the `.env.template` file to create a new `.env` file in the `srcs` directory.
@@ -427,7 +425,7 @@ The Inception project is designed to expand knowledge in **system administration
 
 # Security and Best Practices
 - **Environment Variables**:
-  - Sensitive data is stored in the .env file and excluded from version control via .gitignore.
+  - Sensitive data is stored in the `.env` file and excluded from version control via `.gitignore`.
 
 - **TLS Encryption**:
   - HTTPS using TLSv1.2 or TLSv1.3 ensures secure communication between the client and the server.
