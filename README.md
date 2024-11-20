@@ -359,6 +359,22 @@ The Inception project is designed to expand knowledge in **system administration
 
     The WordPress website is accessible through the configured domain over HTTPS.
 
+    <br>
+
+    **To log in to the WordPress admin dashboard as the editor**:
+
+    - **Visit the login page at**:
+      ``` text
+      https://<your-domain>/wp-login.php
+      ```
+      > Replace `<your-domain>` with the value of your `WP_HTTPS_UR:` from the `.env` file.
+      
+    - **Enter the editor's credentials**:
+      - **Username**: The value of `WP_USER` from the `.env` file.
+      - **Password**: The value of `WP_PASS` from the `.env` file.
+        
+    - **Once logged in**, you can create, edit, and manage content within WordPress.
+
 <br>
 
 6.  **Accessing the Database**:
