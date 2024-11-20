@@ -3,17 +3,28 @@
 # Set the working directory
 if [ ! -d /run/mysqld ]; then
 
-	# Create the run folder
-	mkdir -p	/run/mysqld
+	if [ ! -d /run/mysqld ]; then
+		echo "Initializing MariaDB data directory..."
 
-	# Change owner and group
-	chown -R	mysql:mysql		/run/mysqld
-	chown -R	mysql:mysql		/var/lib/mysql
+		# Create the run folder
+		mkdir -p	/run/mysqld
+
+		# Change owner and group
+		chown -R	mysql:mysql		/run/mysqld
+		chown -R	mysql:mysql		/var/lib/mysql
+	else
+		echo "MariaDB data directory already initialized."
+	fi
 
 	# Initialize the database
-	mysql_install_db
+	if [ ! -d /var/lib/mysql/mysql ]; then
+		mysql_install_db
+	else
+		echo "MariaDB database already initialized."
+	fi
 
 	# Set up the database and the user
+	echo "Setting up the database and the user..."
 	{
 		echo "FLUSH PRIVILEGES;"
 		echo "CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;"
@@ -22,7 +33,11 @@ if [ ! -d /run/mysqld ]; then
 		echo "FLUSH PRIVILEGES;"
 	} | mysqld --bootstrap
 
+else
+	echo "MariaDB data directory already exists."
 fi
 
 # Run mariaDB in the foreground
+echo "Starting MariaDB..."
+echo "MariaDB is ready!"
 exec mysqld
