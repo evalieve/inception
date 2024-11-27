@@ -297,7 +297,7 @@ The Inception project is designed to expand knowledge in **system administration
 
 4. **Using the Makefile**:
 
-   The Makefile automates common tasks for managing the Docker environment. Below is a list of available commands and their purposes.
+   The [`Makefile`](./Makefile) automates common tasks for managing the Docker environment. Below is a list of available commands and their purposes.
     - **Build and Start Containers**: 
       > This is the default target. It builds the Docker images and starts the containers in detached mode.
         ``` bash
@@ -305,13 +305,13 @@ The Inception project is designed to expand knowledge in **system administration
         ```
 
     - **Start the Containers**: 
-      > Starts the containers defined in docker-compose.yml in detached mode. If the containers are not already built, it will build them first.
+      > Starts the containers defined in `compose.yml` in detached mode. If the containers are not already built, it will build them first.
         ``` bash
         make up
         ```
 
     - **Build the Containers**:
-      > Builds the Docker images defined in the docker-compose.yml file without starting the containers.
+      > Builds the Docker images defined in the `compose.yml` file without starting the containers.
         ``` bash
         make build
         ```
@@ -323,19 +323,19 @@ The Inception project is designed to expand knowledge in **system administration
         ```
 
     - **Show Container Status**:
-      > Displays the status of all containers managed by the docker-compose.yml file.
+      > Displays the status of all containers managed by the `compose.yml` file.
         ``` bash
         make ps
         ```
         
     - **View Logs**:
-      > Shows the logs for all services defined in the docker-compose.yml file. Useful for debugging and monitoring.
+      > Shows the logs for all services defined in the `compose.yml` file. Useful for debugging and monitoring.
         ``` bash
         make logs
         ```
         
     - **Rebuild and Restart Containers**:
-      > A shortcut to stop (make down), rebuild, and restart (make up) the containers. Useful for applying changes.
+      > A shortcut to stop (`make down`), rebuild, and restart (`make up`) the containers. Useful for applying changes.
         ``` bash
         make re
         ```
