@@ -295,7 +295,30 @@ The Inception project is designed to expand knowledge in **system administration
 
 <br>
 
-4. **Using the Makefile**:
+4. Update the Domain and Hosts File:
+
+    - **Update the Nginx configuration file**:
+      Open the Nginx [`default.conf`](./srcs/etc/nginx/tools/default.conf) and ensure the server_name directive matches your intra login followed by `.42.fr` as required by the project.
+
+    - **Add the Domain to /etc/hosts**:
+      To access your WordPress site using the custom domain, add it to your system’s `/etc/hosts` file. Open the file with elevated privileges:
+    
+       ``` bash
+        sudo nano /etc/hosts
+       ```
+        
+        Add the following line:
+        ```plaintext
+        127.0.0.1 yourlogin.42.fr
+        ```
+        Save and exit.
+        
+        > Without this step, the custom domain `yourlogin.42.fr` will not resolve to your localhost.
+
+<br>
+
+
+5. **Using the Makefile**:
 
    The [`Makefile`](./Makefile) automates common tasks for managing the Docker environment. Below is a list of available commands and their purposes.
     - **Build and Start Containers**: 
@@ -355,7 +378,7 @@ The Inception project is designed to expand knowledge in **system administration
 
 <br>
 
-5.  **Accessing the Application**:
+6.  **Accessing the Application**:
 
     The WordPress website is accessible through the configured domain or `localhost` over HTTPS.
 
@@ -377,7 +400,7 @@ The Inception project is designed to expand knowledge in **system administration
 
 <br>
 
-6.  **Accessing the Database**:
+7.  **Accessing the Database**:
 
     As part of the learning process for this project, you can access the MariaDB database container and inspect its tables. Follow the steps below to connect to the database and explore its contents.
 
@@ -436,8 +459,18 @@ The Inception project is designed to expand knowledge in **system administration
 
 <br>
 
----
+8.    **Verify Docker Image Names**:
 
+      After building the project, you can verify that the Docker images have been correctly built and tagged with their expected names.
+
+      - **List All Docker Images**:
+        Run the following command to view all available Docker images:
+
+          ```bash
+          docker images
+          ```
+        
+<br>
 
 # Security and Best Practices
 - **Environment Variables**:
