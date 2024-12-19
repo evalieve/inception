@@ -3,6 +3,7 @@ name: inception
 services:
   mariadb:
     container_name: mariadb
+    image: mariadb
     build: etc/mariadb
     restart: always
     volumes:
@@ -14,6 +15,7 @@ services:
 
   wordpress:
     container_name: wordpress
+    image: wordpress
     build: etc/wordpress
     restart: always
     depends_on:
@@ -27,6 +29,7 @@ services:
 
   nginx:
     container_name: nginx
+    image: nginx
     build: etc/nginx
     restart: always
     depends_on:
