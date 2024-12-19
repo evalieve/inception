@@ -293,6 +293,8 @@ The Inception project is designed to expand knowledge in **system administration
         DOMAIN=example.com
         ```
 
+      > Ensure you update the `wp_https_url` and `domain` in the `.env` file to match your intra login followed by .42.fr, and use strong credentials for all usernames and passwords, adhering to the subject's rules.
+
 <br>
 
 4. Update the Domain and Hosts File:
